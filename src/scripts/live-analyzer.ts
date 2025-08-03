@@ -1,5 +1,5 @@
 /**
- * live-analyzer.js (v1.0)
+ * live-analyzer.ts (v1.0)
  * Real-time analyzer for currently running scripts.
  * No Singularity API required.
  *

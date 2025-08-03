@@ -1,15 +1,15 @@
-/** 
- * neuroflux-startup.js
- * Automated INT XP & NeuroFlux Governor farmer for startup.js workflows.
+/**
+ * neuroflux-startup.ts
+ * Automated INT XP & NeuroFlux Governor farmer for startup.ts workflows.
  * Now PRAAXIS_ALPHA compliant with explicit --delay and update/removal in /data/startup.txt.
  * v1.5.0 | 2025-07-24 | SALVO PRAXIS | PRAAXIS_ALPHA
  *
  * Usage:
- *   run scripts/singularity/neuroflux-startup.js --setup --min=3 --delay=4000
- *   run scripts/singularity/neuroflux-startup.js --update --min=5 --delay=8000
- *   run scripts/singularity/neuroflux-startup.js --remove
- *   run scripts/singularity/neuroflux-startup.js --suggest
- *   run scripts/singularity/neuroflux-startup.js --help
+ *   run scripts/singularity/neuroflux-startup.ts --setup --min=3 --delay=4000
+ *   run scripts/singularity/neuroflux-startup.ts --update --min=5 --delay=8000
+ *   run scripts/singularity/neuroflux-startup.ts --remove
+ *   run scripts/singularity/neuroflux-startup.ts --suggest
+ *   run scripts/singularity/neuroflux-startup.ts --help
  *
  * Flags:
  *   --setup        Add or update this script in /data/startup.txt with provided flags (--delay, --min, etc.)
@@ -23,7 +23,7 @@
  */
 
 const STARTUP_LIST = "/data/startup.txt";
-const SCRIPT_PATH = "scripts/singularity/neuroflux-startup.js";
+const SCRIPT_PATH = "scripts/singularity/neuroflux-startup.ts";
 const CONFIG_FILE = "/data/nfg-cycles.txt";
 const DEFAULT_DELAY = 4000;
 
@@ -195,7 +195,7 @@ export async function main(ns) {
             ns.tprint(`${c.cyan}[neuroflux-startup.js]${c.reset} Cycles left after this install: ${cyclesLeft}`);
         }
         await ns.sleep(3000);
-        ns.singularity.installAugmentations("startup.js");
+        ns.singularity.installAugmentations("startup.ts");
         // Script will terminate/reset here
     }
     // Clean up after last cycle

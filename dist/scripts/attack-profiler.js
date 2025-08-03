@@ -2,11 +2,10 @@
 export async function main(ns) {
     // Helper: human-format
     function fmt(n) {
-        return n >= 1e12 ? (n/1e12).toFixed(2)+'T' :
-               n >= 1e9 ? (n/1e9).toFixed(2)+'B' :
-               n >= 1e6 ? (n/1e6).toFixed(2)+'M' : n.toFixed(2);
+        return n >= 1e12 ? (n / 1e12).toFixed(2) + 'T' :
+            n >= 1e9 ? (n / 1e9).toFixed(2) + 'B' :
+                n >= 1e6 ? (n / 1e6).toFixed(2) + 'M' : n.toFixed(2);
     }
-
     const nodeProfiles = [
         {
             n: 1, name: "The World (Default)", best: "Hacking/Crime/Corp/Gangs",
@@ -104,19 +103,17 @@ export async function main(ns) {
         },
         // Add more as desired...
     ];
-
     const player = ns.getPlayer();
     const bitNode = player.bitNodeN;
-
     // Robust SF detection:
     let sf = 1;
     if (player.sourceFiles && Array.isArray(player.sourceFiles)) {
         const file = player.sourceFiles.find(f => f.n === bitNode);
-        if (file && file.lvl) sf = file.lvl;
+        if (file && file.lvl)
+            sf = file.lvl;
     }
-
     // Only call getBitNodeMultipliers() if we have SF5
-    let mults: BitNodeMultipliers = {
+    let mults = {
         HackingLevel: 1,
         ServerMaxMoney: 1,
         CompanyRepGain: 1,
@@ -132,9 +129,7 @@ export async function main(ns) {
     if (canReadMults) {
         mults = ns.getBitNodeMultipliers();
     }
-
     const node = nodeProfiles.find(n => n.n === bitNode);
-
     ns.tprint(`
 ========== BitNode Attack Profile ==========
 BitNode: ${bitNode} - ${node ? node.name : "Unknown"}
@@ -155,10 +150,10 @@ Best Approach: ${node ? node.best : "Unknown"}
 ${node ? node.why : "No strategy available for this node."}
 
 ----------------- Step Plan ----------------
-${node && node.steps ? node.steps.map(s => "- "+s).join('\n') : ""}
+${node && node.steps ? node.steps.map(s => "- " + s).join('\n') : ""}
 
 ----------------- Thresholds ---------------
-${node && node.thresholds ? node.thresholds.map(s => "- "+s).join('\n') : ""}
+${node && node.thresholds ? node.thresholds.map(s => "- " + s).join('\n') : ""}
 
 ===========================================
 `);

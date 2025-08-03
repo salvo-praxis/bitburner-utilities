@@ -1,13 +1,25 @@
 {
   "compilerOptions": {
     "target": "ES2021",
-    "module": "commonjs",
+    "module": "ES2020",
+    "moduleResolution": "node",
     "outDir": "dist",
-    "strict": true,
+    "strict": false,
+    "noImplicitAny": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "types/**/*"],
+  "exclude": [
+    "node_modules",
+    "src/deprecated/**",
+    "src/scripts/deprecated/**",
+    "src/scripts/singularity/deprecated/**"
+  ]
 }
