@@ -1,0 +1,16 @@
+# PHPStorm specific
+.idea/
+*.iml
+*.iws
+
+# Node.js (if you're using npm for linting)
+node_modules/
+package-lock.json
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# BitBurner specific
+*.bak
+*.txt
